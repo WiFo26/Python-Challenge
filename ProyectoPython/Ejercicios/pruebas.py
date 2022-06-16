@@ -32,6 +32,37 @@
 #         print("Buzz ha vencido!")
 #         battleOver = True
 
-#########Para Numeros Primos############
-primos = input().split(",")
-print(primos)
+# #########Para Numeros Primos############
+# file = open("harry.txt","r")
+# print(file.read().split("#"))
+
+# ###Hotel Review####
+# frase = "14,Milestone Hotel Kensington,1 Kensington Court Kensington and Chelsea London W8 5DL United Kingdom"
+# pais = "United Kingdom"
+# list_frase = frase.split(",")
+
+# if pais in list_frase[2]:
+#     print("Si esta")
+# else:
+#     print("No está")
+# ids = {'3': 2, '7': 2}
+# most_reviewed = max(ids.values())
+# mejores_hoteles = []
+# for i in ids.keys():
+#     if ids[i] == most_reviewed:
+#         mejores_hoteles.append(i)
+# print(mejores_hoteles)
+reviews = open("reviews.txt")
+reviews = reviews.read().split("\n")
+bot = open("bots.txt")
+bot = bot.read().split("\n")
+reviews_index_to_delete = []
+print(len(reviews))
+for i in bot:
+    for j in range(len(reviews)):
+        id_usuario = reviews[j].split(",")[0]
+        if i == id_usuario:
+            reviews_index_to_delete.append(j)
+for i in sorted(reviews_index_to_delete,reverse=True):
+    reviews.pop(i)
+print(len(reviews))
